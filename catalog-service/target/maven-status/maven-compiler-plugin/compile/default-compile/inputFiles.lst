@@ -1,0 +1,11 @@
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\model\InventoryStatus.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\dao\ProductDAOImpl.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\model\PriceQuote.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\model\Product.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\model\SearchCriteria.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\model\CatalogFault.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\util\DatabaseConnection.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\service\CatalogService.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\exception\CatalogException.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\service\CatalogServiceImpl.java
+D:\Globalbooks-soa\src\main\java\com\globalbooks\catalog\dao\ProductDAO.java
