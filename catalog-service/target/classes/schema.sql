@@ -1,13 +1,3 @@
--- PostgreSQL Database Schema for Catalog Service
--- Location: src/main/resources/schema.sql
-
--- Create database (run as superuser)
--- CREATE DATABASE globalbooks_catalog;
-
--- Connect to the database
--- \c globalbooks_catalog;
-
--- Create products table
 CREATE TABLE IF NOT EXISTS products (
     product_id VARCHAR(50) PRIMARY KEY,
     title VARCHAR(255) NOT NULL,

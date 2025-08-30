@@ -1,0 +1,15 @@
+com\globalbooks\catalog\service\CatalogServiceImpl.class
+com\globalbooks\catalog\model\CatalogFault.class
+com\globalbooks\catalog\model\Product.class
+com\globalbooks\catalog\model\PriceQuote.class
+com\globalbooks\catalog\util\DatabaseConnection.class
+com\globalbooks\catalog\dao\ProductDAOImpl.class
+com\globalbooks\catalog\config\SecurityConfig$UserRole.class
+com\globalbooks\catalog\exception\CatalogException.class
+com\globalbooks\catalog\dao\ProductDAO.class
+com\globalbooks\catalog\security\WSSecurityHandler.class
+com\globalbooks\catalog\model\SearchCriteria.class
+com\globalbooks\catalog\config\SecurityConfig$UserInfo.class
+com\globalbooks\catalog\service\CatalogService.class
+com\globalbooks\catalog\config\SecurityConfig.class
+com\globalbooks\catalog\model\InventoryStatus.class

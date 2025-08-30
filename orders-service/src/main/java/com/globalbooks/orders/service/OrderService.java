@@ -10,6 +10,7 @@ import com.globalbooks.orders.repository.OrderRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,8 +29,8 @@ public class OrderService {
     private final ObjectMapper objectMapper;
 
     @Transactional
-    public OrderResponseDTO createOrder(OrderCreateDTO orderDTO) {
-        log.info("Creating new order for customer: {}", orderDTO.getCustomerId());
+    public OrderResponseDTO createOrder(OrderCreateDTO orderDTO, String authenticatedUsername) {
+        log.info("Creating new order for authenticated customer: {}", authenticatedUsername);
 
         // Generate order ID
         String orderId = generateOrderId();
@@ -37,7 +38,7 @@ public class OrderService {
         // Create order entity
         Order order = new Order();
         order.setOrderId(orderId);
-        order.setCustomerId(orderDTO.getCustomerId());
+        order.setCustomerId(authenticatedUsername); // Use authenticated username for security
         order.setStatus(OrderStatus.PENDING);
         order.setPaymentMethod(orderDTO.getPaymentMethod());
 
@@ -72,7 +73,7 @@ public class OrderService {
 
         // Save order
         Order savedOrder = orderRepository.save(order);
-        log.info("Order created successfully with ID: {}", savedOrder.getOrderId());
+        log.info("Order created successfully with ID: {} for customer: {}", savedOrder.getOrderId(), authenticatedUsername);
 
         return convertToResponseDTO(savedOrder);
     }
@@ -138,6 +139,26 @@ public class OrderService {
 
         orderRepository.delete(order);
         log.info("Order {} deleted successfully", orderId);
+    }
+
+    /**
+     * Verifies that the specified user owns the given order
+     * Throws AccessDeniedException if the user doesn't own the order
+     */
+    @Transactional(readOnly = true)
+    public void verifyOrderOwnership(String orderId, String userId) {
+        log.info("Verifying ownership of order {} for user {}", orderId, userId);
+
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new OrderNotFoundException("Order not found: " + orderId));
+
+        if (!order.getCustomerId().equals(userId)) {
+            log.warn("Access denied: User {} attempted to access order {} owned by {}",
+                    userId, orderId, order.getCustomerId());
+            throw new AccessDeniedException("Access denied: You can only access your own orders");
+        }
+
+        log.info("Order ownership verified successfully for user {}", userId);
     }
 
     private String generateOrderId() {
