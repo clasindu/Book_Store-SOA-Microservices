@@ -65,37 +65,14 @@ The architecture showcases the transition from a tightly-coupled monolithic syst
 
 ```
 Book_Store-SOA-Microservices/
-├── catalog-service/                # SOAP-based catalog service
-│   ├── src/
-│   │   ├── main/java/
-│   │   └── main/resources/
-│   ├── pom.xml
-│   └── Dockerfile
-├── orders-service/                 # REST-based orders service
-│   ├── src/
-│   │   ├── main/java/
-│   │   └── main/resources/
-│   ├── pom.xml
-│   └── Dockerfile
-├── payment-service/                # REST-based payment service
-│   ├── src/
-│   │   ├── main/java/
-│   │   └── main/resources/
-│   ├── pom.xml
-│   └── Dockerfile
-├── shipping-service/               # REST-based shipping service
-│   ├── src/
-│   │   ├── main/java/
-│   │   └── main/resources/
-│   ├── pom.xml
-│   └── Dockerfile
-├── docker-compose.yml              # Service orchestration
-├── init-databases.sql              # Database initialization scripts
-├── .env                           # Environment variables
-├── .gitignore                     # Git ignore file
-└── README.md                      # This documentation
+├── catalog-service/          # SOAP-based catalog service
+├── orders-service/           # REST-based orders service
+├── payment-service/          # REST-based payment service
+├── shipping-service/         # REST-based shipping service
+├── docker-compose.yml        # Service orchestration
+├── init-databases.sql        # DB initialization
+└── README.md                 # Documentation
 ```
-
 ---
 
 ## 🚀 Quick Start
@@ -260,17 +237,9 @@ Use Docker Compose for local development:
 docker-compose up -d
 ```
 
-### Production Deployment
 
-#### Docker Swarm
-```bash
-docker stack deploy -c docker-compose.prod.yml bookstore
-```
 
-#### Kubernetes
-```bash
-kubectl apply -f k8s/
-```
+
 
 #### AWS/Cloud Deployment
 1. Push images to container registry
@@ -327,21 +296,7 @@ RabbitMQ exchanges and queues:
 
 ---
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow Java coding standards
-- Write unit and integration tests
-- Update documentation for API changes
-- Use conventional commits
-
----
 
 ## 📄 License
 
@@ -355,25 +310,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - GitHub: [@Chamath-Lasindu](https://github.com/Chamath-Lasindu)
 
 
----
-
-## 🙏 Acknowledgments
-
-- GlobalBooks Inc. for the business case study
-- Spring Boot team for excellent framework
-- Docker community for containerization tools
-- Open source contributors
-
----
-
-## 📞 Support
-
-If you have any questions or need help with setup:
-1. Check the [Issues](https://github.com/Chamath-Lasindu/Book_Store-SOA-Microservices/issues) page
-2. Create a new issue with detailed description
-3. Contact the maintainer
-
----
 
 <p align="center">
   <b>Happy Coding! 🚀</b>
